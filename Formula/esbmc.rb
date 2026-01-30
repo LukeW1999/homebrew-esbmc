@@ -1,9 +1,8 @@
 class Esbmc < Formula
   desc "Context-Bounded Model Checker for C/C++/Python programs"
   homepage "https://esbmc.org"
-  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.0.zip"
-  version "8.0"
-  sha256 "c72bfc4b08d61af433faa3bb0510e04396c48519cf009be1cfff80ac9a26a388"
+  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.0.tar.gz"
+  sha256 "75506d4ee82e2d5fcc3173059561b7636226671a8a856addcc8246347d5fa01a"
   license "Apache-2.0"
   head "https://github.com/esbmc/esbmc.git", branch: "master"
   depends_on "bison" => :build
@@ -19,7 +18,10 @@ class Esbmc < Formula
   depends_on "python@3.12"
   depends_on "yaml-cpp"
   depends_on "z3"
+  
   def install
+    cd "esbmc-8.0"
+    
     # Create a dedicated virtual environment for ESBMC's Python dependencies
     python3_bin = Formula["python@3.12"].opt_bin/"python3.12"
     
@@ -44,7 +46,6 @@ class Esbmc < Formula
       -DENABLE_PYTHON_FRONTEND=ON
       -DENABLE_SOLIDITY_FRONTEND=ON
       -DENABLE_JIMPLE_FRONTEND=ON
-      -DBUILD_TESTING=ON
       -DENABLE_FUZZER=OFF
       -DENABLE_Z3=ON
       -DZ3_DIR=#{Formula["z3"].opt_lib}/cmake/z3
