@@ -20,7 +20,7 @@ class Esbmc < Formula
   depends_on "z3"
   
   def install
-    cd "esbmc-8.0"
+    cd "esbmc-8.0" if (buildpath/"esbmc-8.0").directory?
     
     # Create a dedicated virtual environment for ESBMC's Python dependencies
     python3_bin = Formula["python@3.12"].opt_bin/"python3.12"

@@ -6,17 +6,32 @@ A [Homebrew](https://brew.sh) tap to install [ESBMC](https://esbmc.org) (the Eff
 
 ## Installation
 
+### Stable Version (ESBMC 8.0 published)
+
 ```bash
 brew tap LukeW1999/homebrew-esbmc
 brew install esbmc
 ```
 
-*(If the repo is still named `homebrew_ESBMC`, use:* `brew tap LukeW1999/homebrew_ESBMC https://github.com/LukeW1999/homebrew_ESBMC` *instead of the first line.)*
+### Development Version (Master Branch)
 
-To upgrade:
+To install the latest code from the master branch:
 
 ```bash
+brew tap LukeW1999/homebrew-esbmc
+brew install --HEAD esbmc
+```
+
+### Upgrade
+
+For stable version:
+```bash
 brew upgrade esbmc
+```
+
+For development version (master branch):
+```bash
+brew upgrade --HEAD esbmc
 ```
 
 ## Usage
