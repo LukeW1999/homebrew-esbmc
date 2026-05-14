@@ -15,7 +15,6 @@ class Esbmc < Formula
   depends_on "fmt"
   depends_on "gmp"
   depends_on "llvm"
-  depends_on "mypy"
   depends_on "nlohmann-json"
   depends_on "python@3.12"
   depends_on "yaml-cpp"
@@ -44,6 +43,14 @@ class Esbmc < Formula
     system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
+  end
+
+  def caveats
+    <<~EOS
+      For Python type checking support, install mypy separately:
+        brew install mypy
+      Without mypy, ESBMC will still verify Python programs but skip type checking.
+    EOS
   end
 
   test do
