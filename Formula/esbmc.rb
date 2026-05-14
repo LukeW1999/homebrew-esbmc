@@ -28,7 +28,6 @@ class Esbmc < Formula
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DLLVM_DIR=#{Formula["llvm"].opt_lib}/cmake/llvm
       -DClang_DIR=#{Formula["llvm"].opt_lib}/cmake/clang
-      -DC2GOTO_SYSROOT=#{MacOS.sdk_path}
       -DPython3_EXECUTABLE=#{python3}
       -DENABLE_CSMITH=ON
       -DENABLE_PYTHON_FRONTEND=ON
@@ -40,6 +39,7 @@ class Esbmc < Formula
       -DENABLE_GOTO_CONTRACTOR=OFF
       -DBUILD_STATIC=OFF
     ]
+    args << "-DC2GOTO_SYSROOT=#{MacOS.sdk_path}" if OS.mac?
     system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
