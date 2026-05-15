@@ -54,8 +54,6 @@ class Esbmc < Formula
   end
 
   test do
-    assert_match "ESBMC version", shell_output("#{bin}/esbmc --version")
-
     (testpath/"test.c").write <<~EOS
       #include <assert.h>
       int main() {
@@ -64,7 +62,8 @@ class Esbmc < Formula
         return 0;
       }
     EOS
-    system bin/"esbmc", "test.c", "--no-bounds-check", "--no-pointer-check"
+    assert_match "VERIFICATION SUCCESSFUL",
+      shell_output("#{bin}/esbmc #{testpath}/test.c --no-bounds-check --no-pointer-check")
 
     (testpath/"test.py").write <<~EOS
       def main():
@@ -73,6 +72,7 @@ class Esbmc < Formula
       if __name__ == "__main__":
           main()
     EOS
-    system bin/"esbmc", "test.py"
+    assert_match "VERIFICATION SUCCESSFUL",
+      shell_output("#{bin}/esbmc #{testpath}/test.py")
   end
 end
