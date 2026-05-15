@@ -1,8 +1,8 @@
 class Esbmc < Formula
   desc "Efficient SMT-based context-bounded model checker for C, C++, and Python"
   homepage "https://esbmc.org"
-  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.2.0.tar.gz"
-  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.3.tar.gz"
+  sha256 "3898c7bd799fb495c4709a72296805e2123bd23f410aac5038ca2e6e3c33d257"
   license "Apache-2.0"
   head "https://github.com/esbmc/esbmc.git", branch: "master"
 
